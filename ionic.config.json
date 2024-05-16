@@ -1,0 +1,7 @@
+{
+  "name": "peoresnada",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

@@ -1,0 +1,33 @@
+.separacion {
+    
+    padding-left: 25px;
+  }
+ 
+  
+  .nombre {
+    font-size: small;
+    margin-bottom: 0.25rem;
+   
+  }
+  .descripcion{
+    font-size: small;
+    font-weight: bold;
+    margin-top: 0.25rem;
+  }
+  .separacion2 {
+    padding: 0.5rem 0;
+    padding-left: 10px;
+  }
+  
+  .action-row ion-col {
+    display: flex;
+    align-items: center;
+  }
+  ion-fab-button {
+    --background: #3880ff;
+    --color: white;
+  }
+  .posicion{
+    align-items: end;
+    align-content: end;
+  }

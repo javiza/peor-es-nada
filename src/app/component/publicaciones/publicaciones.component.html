@@ -1,0 +1,30 @@
+<ion-list>
+  <ion-item >
+    <div>
+      <ion-img></ion-img>
+    </div>
+
+    <div class="separacion2">
+     
+      <p class="descripcion">descripcion</p>
+    </div>
+    <div class="separacion2">
+     
+      <p class="fecha">fecha</p>
+    </div>
+
+    <ion-buttons class="separacion">
+      <ion-button>
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-item>
+</ion-list>
+<ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="navigateToPage()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
