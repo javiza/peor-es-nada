@@ -12,4 +12,5 @@ import { PublicacionesComponent } from 'src/app/component/publicaciones/publicac
 })
 export class HomePage {
   constructor() {}
+  
 }

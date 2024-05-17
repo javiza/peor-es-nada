@@ -7,8 +7,7 @@ import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonButtons,
 import { IonicModule } from '@ionic/angular';
 import { trashOutline, add } from 'ionicons/icons'
 import { addIcons } from 'ionicons';
-import { NavController } from '@ionic/angular';
-import { PublicarPage } from 'src/app/pages/publicar/publicar.page';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-publicaciones',
@@ -18,13 +17,13 @@ import { PublicarPage } from 'src/app/pages/publicar/publicar.page';
   imports: [IonicModule, CommonModule, FormsModule, IonHeader, IonFabButton,
     IonToolbar, IonTitle, IonContent, IonLabel, IonButtons, IonIcon,
     IonImg, IonList, IonItem, IonButton, IonCard, IonList,
-    IonSearchbar
+    IonSearchbar, RouterModule
   ],
 })
 export class PublicacionesComponent implements OnInit {
 
   constructor(
-    private navCtrl: NavController
+    private router: Router
   ) {
     addIcons({
       trashOutline, add
@@ -34,6 +33,7 @@ export class PublicacionesComponent implements OnInit {
   ngOnInit() {}
 
   navigateToPage() {
-    this.navCtrl.navigateForward('/src/pages/publicar.page.html');
+    this.router.navigate(['/publicar']);
   }
-}
+}  
+ 

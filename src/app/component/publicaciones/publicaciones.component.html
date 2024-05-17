@@ -15,16 +15,18 @@
 
     <ion-buttons class="separacion">
       <ion-button>
-        <ion-icon name="trash-outline"></ion-icon>
+        <ion-icon name="camera-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
 
   </ion-item>
 </ion-list>
+<div>
 <ion-content>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="navigateToPage()">
+    <ion-fab-button [routerLink]="['/publicar']">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>
+</div>
