@@ -1,17 +1,11 @@
 <ion-list>
-  <ion-item >
-    <div>
+  <ion-item *ngForm = "let dato of datos" >
+   
       <ion-img></ion-img>
-    </div>
+    <ion-text>{{dato.tiulo}}</ion-text>
 
-    <div class="separacion2">
-     
-      <p class="descripcion">descripcion</p>
-    </div>
-    <div class="separacion2">
-     
-      <p class="fecha">fecha</p>
-    </div>
+    <ion-label>{{dato.descripcion}}</ion-label>
+    <ion-text>{{ fecha | date:'fullDate' | uppercase }}</ion-text>
 
     <ion-buttons class="separacion">
       <ion-button>
@@ -23,7 +17,7 @@
 </ion-list>
 <div>
 <ion-content>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab vertical="bottom" slot="fixed">
     <ion-fab-button [routerLink]="['/publicar']">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>

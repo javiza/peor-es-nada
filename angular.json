@@ -4,6 +4,9 @@
   "newProjectRoot": "projects",
   "projects": {
     "app": {
+      "i18n":{
+        "sourceLocale": "es-CL"
+      },
       "projectType": "application",
       "schematics": {
         "@ionic/angular-toolkit:page": {

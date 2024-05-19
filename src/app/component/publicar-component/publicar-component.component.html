@@ -10,20 +10,14 @@
       <ion-input [(ngModel)]="descripcion" name="descripcion" required></ion-input>
     </ion-item>
 
-    <!-- <ion-item>
+    <ion-item>
       <ion-label>Imagen</ion-label>
       <ion-button (click)="tomarFoto()">
         <ion-icon name="camera-outline"></ion-icon>
       </ion-button>
-      <img *ngIf="foto !" [src]="foto.webPath" alt="foto">
-    </ion-item> -->
+      <img *ngIf="foto" [src]="foto.webPath" alt="foto">
+    </ion-item>
 
     <ion-button (click)="agregar(formulario)" [disabled]="!formulario.valid">Guardar</ion-button>
   </form>
 </ion-content>
- 
-  
-
-  
-    
-

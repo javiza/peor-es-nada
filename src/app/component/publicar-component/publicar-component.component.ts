@@ -8,6 +8,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Photo,Camera,CameraResultType} from '@capacitor/camera';
 import { NgForm } from '@angular/forms';
 import { Publicacion, DatabaseService } from 'src/app/services/database.service';
+import { PublicacionService } from 'src/app/services/publicacion.service';
 
 @Component({
   selector: 'app-publicar-component',
@@ -25,44 +26,47 @@ export class PublicarComponentComponent  implements OnInit {
   publicacion: Publicacion[] = []
   titulo:string = "";
   descripcion: string = "";
-  // foto:Photo|null = null
+  foto:Photo|null = null
   @ViewChild('formulario')
   formulario!: NgForm;
 
   constructor( 
-    private dbService:DatabaseService
+    private publicacionService:PublicacionService,
+    private databaseService: DatabaseService
   ) { 
     this.inicializarPlugin();
     addIcons({
       cameraOutline
     })
   }
-  async inicializarPlugin(){
-    await this.dbService.iniciarPlugin();
-    this.actualizar();
-  }
-
   async ngOnInit() {
     try {
-      await this.dbService.iniciarPlugin();
+      await this.databaseService.iniciarPlugin();
       this.actualizar();
     } catch (err) {
       console.error('Error al inicializar la base de datos:', err);
     }
   }
-  async ngOnDestroy(){
-    await this.dbService.cerrarConexion();
+  
+  async inicializarPlugin(){
+    await this.databaseService.iniciarPlugin();
+    this.actualizar();
   }
-  // async tomarFoto() {
-  //   this.foto = await Camera.getPhoto({
-  //     quality:90,
-  //     resultType: CameraResultType.Uri,
-  //     savtengo eToGallery:true,
-  //     correctOrientation:true
-  //   })
-  // }
+
+
+  async ngOnDestroy(){
+    await this.databaseService.cerrarConexion();
+  }
+  async tomarFoto() {
+    this.foto = await Camera.getPhoto({
+      quality:90,
+      resultType: CameraResultType.Uri,
+      saveToGallery:true,
+      correctOrientation:true
+    })
+  }
   async actualizar(){
-  this.publicacion = await this.dbService.findAllPublicacion()
+  this.publicacion = await this.publicacionService.getPublicacion()
   }
   async agregar(form:NgForm){
     if(form.valid){
@@ -71,7 +75,7 @@ export class PublicarComponentComponent  implements OnInit {
         descripcion: form.value.descripcion
         // foto: this.foto?.webPath || '' 
         };
-      await this.dbService.addPublicacion(publicacion);
+      await this.publicacionService.agregarPublicacion(publicacion);
       await this.actualizar();
       form.resetForm()
       // this.foto = null;
@@ -84,14 +88,10 @@ export class PublicarComponentComponent  implements OnInit {
       descripcion: publicacion.descripcion,
       // foto: publicacion.foto || ''
     }
-    await this.dbService.updatePublicacion(publicacionEditada)
+    await this.publicacionService.editar(publicacionEditada)
     await this.actualizar()
   }
-  async eliminar(publicacion:Publicacion){
-    if(publicacion.id){
-      await this.dbService.deletePublicacion(publicacion.id)
-      await this.actualizar()
-    }
-  }
+
+
 
 }
